@@ -1,12 +1,17 @@
 <template lang="pug">
   .home
-    span home
+    layout
 </template>
 
 <script>
+import Layout from 'App/Home/Layout/Layout.vue';
 
 export default {
   name: 'Home',
+  components: {
+    Layout,
+  },
+
 };
 </script>
 
