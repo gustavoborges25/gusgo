@@ -1,5 +1,6 @@
 <template lang="pug">
   v-autocomplete(
+    return-object
     no-data-text="Não encontrado"
     item-value="id"
     item-text="nome"
@@ -9,18 +10,21 @@
     :items="cities"
     :rules="[rules.required]"
     v-model="city"
-    @change="$emit('change', $event)"
+    @change="onChange($event)"
   )
 </template>
 
 <script>
+  import Adress from 'Domain/Adress/Adress';
+
   export default {
-    name: 'select-city',
+    name: 'SelectCity',
     props: {
       value: {
         type: Object,
-        default: function () {},
-      },      label: {
+        default: () => {},
+      },
+      label: {
         type: String,
         default: 'Cidade',
       },
@@ -33,8 +37,8 @@
         default: false,
       },
       state: {
-        type: Number,
-        default: 12,
+        type: String,
+        required: true,
       },
     },
     data(vm) {
@@ -44,22 +48,20 @@
         rules: {
           required: value => {
             if (!value && vm.required) {
-              return 'Cidade obrigatória!'
+              return 'Cidade é obrigatória!';
             }
-            return true
+            return true;
           },
-        }
-      }
+        },
+      };
     },
     computed: {
       city: {
         get() {
-          return this.value || { id: 1200013, nome: 'Acrelândia', microrregiao: { id: 12004, nome: 'Rio Branco', mesorregiao:
-                { id: 1202, nome: 'Vale do Acre', UF: { id: 12, sigla: 'AC', nome: 'Acre', regiao:
-                      { 'id': 1, sigla: 'N', nome: 'Norte' } } } } }
+          return this.value;
         },
         set(newValue) {
-          this.$emit('input', newValue)
+          this.$emit('input', newValue);
         },
       },
     },
@@ -67,22 +69,27 @@
       this.loadCities();
     },
     methods: {
-      loadCities () {
-        this.loading = true
-        this
-          .$http
-          .get('http://servicodados.ibge.gov.br/api/v1/localidades/estados/' + this.state + '/municipios')
-          .then(response => {
-            this.cities = response.body
-            this.value = response.body[0]
-            this.loading = false
-        })
+      loadCities() {
+        this.loading = true;
+        Adress
+          .getCities(this.state)
+          .then((data) => {
+            this.cities = data;
+            this.value = data[0];
+            this.loading = false;
+          }, (error) => {
+            console.log(error);
+            this.loading = false;
+          });
+      },
+      onChange($event) {
+        this.$emit('change', $event);
       },
     },
     watch: {
-      state () {
-        this.loadCities()
-      }
-    }
-  }
+      state() {
+        this.loadCities();
+      },
+    },
+  };
 </script>

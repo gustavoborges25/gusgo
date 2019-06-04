@@ -19,7 +19,7 @@
     name: 'btn-cancel',
     methods: {
       change() {
-        this.$emit('click-event')
+        this.$emit('click')
       }
     }
   }

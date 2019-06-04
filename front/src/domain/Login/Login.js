@@ -1,38 +1,41 @@
-import http from '@/support/http/http';
+import LoginService from 'Support/services/login.service';
 
-const tokenKey = 'token';
-const tokenUser = 'user';
+const token = 'token';
 
-function login(user) {
-  return new Promise((resolve, reject) => {
-    http
-      .post('/auth', user)
-      .then((success) => {
-        const { data } = success;
-        saveToken(data, user);
+class Login {
+  static login(user) {
+    return new Promise((resolve, reject) => {
+      LoginService
+        .login(user)
+        .then((success) => {
+          const { data } = success;
+          this.saveToken(data);
+          resolve(success);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
 
-        resolve(success);
-      }, (error) => {
-        reject(error);
-      });
-  });
+  static logout() {
+    return new Promise((resolve, reject) => {
+      LoginService
+        .logout()
+        .then((success) => {
+          resolve(success);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  static saveToken(payload) {
+    return localStorage.setItem(token, payload.token);
+  }
+
+  static getToken() {
+    return localStorage.getItem(token);
+  }
 }
 
-// function changePassword(data) {
-//   return http.patch('/change-password', data)
-// }
-
-function saveToken(payload, user) {
-  localStorage.setItem(tokenKey, payload.token);
-  localStorage.setItem(tokenUser, JSON.stringify(user.email));
-  return;
-}
-
-function getToken() {
-  return localStorage.getItem(tokenKey);
-}
-
-export {
-  login,
-  getToken,
-};
+export default new Login();
