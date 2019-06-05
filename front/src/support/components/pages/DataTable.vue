@@ -33,67 +33,65 @@
 </template>
 
 <script>
-  import SelectPage from "./SelectPage";
-  import BtnAdd from "./ButtonAdd";
+import SelectPage from 'Support/components/inputs/SelectPage.vue';
+import BtnAdd from 'Support/components/buttons/ButtonAdd.vue';
 
-  export default {
-    name: 'data-table',
-    components: {
-      SelectPage,
-      BtnAdd
+export default {
+  name: 'data-table',
+  components: {
+    SelectPage,
+    BtnAdd,
+  },
+  props: {
+    headers: {
+      type: Array,
+      default: () => [],
     },
-    props: {
-      headers: {
-        type: Array,
-        default: []
-      },
-      items: {
-        type: Array,
-        default: []
-      },
-      pagination: {
-        type: Object,
-        default: {}
-      },
-      noDataText: {
-        type: String,
-        default: 'Nenhum registro'
-      },
-      noDataResults: {
-        type: String,
-        default: 'Nenhum registro encontrado'
-      }
+    items: {
+      type: Array,
+      default: () => [],
     },
-    data () {
-      return {
-        page: 1,
-        rowsPerPage: 10,
-        totalItems: 0
-      }
+    pagination: {
+      type: Object,
+      default: () => {},
     },
-    computed:{
-      pages() {
-        const pages = parseInt((this.totalItems), 10) / parseInt((this.rowsPerPage), 10);
-        return Math.ceil(pages);
-      },
-      page: {
-        get() {
-          return this.pagination.actual || 1
-        },
-        set(newValue) {
-          this.pagination.actual = newValue
-          this.$emit('update-list')
-        }
-      },
-      rowsPerPage: {
-        get() {
-          return this.pagination.limit || 1
-        },
-        set(newValue) {
-          this.pagination.limit = newValue
-          this.$emit('update-list')
-        }
-      }
+    noDataText: {
+      type: String,
+      default: 'Nenhum registro',
     },
-  }
+    noDataResults: {
+      type: String,
+      default: 'Nenhum registro encontrado',
+    },
+  },
+  data() {
+    return {
+      totalItems: 0,
+    };
+  },
+  computed: {
+    pages() {
+      const pages = parseInt((this.totalItems), 10) / parseInt((this.rowsPerPage), 10);
+      return Math.ceil(pages);
+    },
+    page: {
+      get() {
+        return this.pagination.actual || 1;
+      },
+      set(newValue) {
+        this.pagination.actual = newValue;
+        this.$emit('update-list');
+      },
+    },
+    rowsPerPage: {
+      get() {
+        return this.pagination.limit || 1;
+      },
+      set(newValue) {
+        this.pagination.limit = newValue;
+        this.$emit('update-list');
+      },
+    },
+  },
+};
 </script>

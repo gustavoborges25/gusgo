@@ -18,33 +18,33 @@
 </template>
 
 <script>
-  export default {
-    name: 'select-page',
-    props: {
-      value: {
-        type: Number,
-        default: 10,
+export default {
+  name: 'select-page',
+  props: {
+    value: {
+      type: Number,
+      default: 10,
+    },
+  },
+  data() {
+    return {
+      items: [10, 20, 50],
+    };
+  },
+  computed: {
+    rowsPerPage: {
+      get() {
+        return this.value || 10;
+      },
+      set(newValue) {
+        this.$emit('input', newValue);
       },
     },
-    data(vm) {
-      return {
-        items: [10, 20, 50],
-      }
+  },
+  methods: {
+    setLimit(limite) {
+      this.rowsPerPage = limite;
     },
-    computed: {
-      rowsPerPage: {
-        get() {
-          return this.value || 10
-        },
-        set(newValue) {
-          this.$emit('input', newValue)
-        },
-      },
-    },
-    methods: {
-      setLimit(limite) {
-        this.rowsPerPage = limite;
-      },
-    },
-  }
+  },
+};
 </script>

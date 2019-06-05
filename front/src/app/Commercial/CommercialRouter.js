@@ -1,34 +1,32 @@
 export default [
   {
-    path: '/orders',
-    name: 'Orders',
-    component: () => import('@/app/Commercial/Orders/Orders.vue'),
-    meta: {
-      sidebar: {
-        icon: 'person',
-        text: 'Gerenciar usuários do painel',
-        exact: true,
-      },
-      title: 'Usuários do painel',
-      disableDivider: true,
-      previewPage: '/',
-      pathNew: '/usuarios/novo',
-    },
+    path: '/sales',
+    name: 'SalesList',
+    component: () => import('@/app/Commercial/Sales/SalesList.vue'),
   },
   {
-    path: '/purchasing',
-    name: 'Purchasing',
-    component: () => import('@/app/Commercial/Purchasing/Purchasing.vue'),
-    meta: {
-      sidebar: {
-        icon: 'person',
-        text: 'Gerenciar usuários do painel',
-        exact: true,
-      },
-      title: 'Usuários do painel',
-      disableDivider: true,
-      previewPage: '/',
-      pathNew: '/usuarios/novo',
-    },
+    path: '/sales/new',
+    name: 'SalesNew',
+    component: () => import('App/Commercial/Sales/SalesForm.vue'),
+  },
+  {
+    path: 'sales/:id',
+    name: 'SalesEdit',
+    component: () => import('App/Commercial/Sales/SalesForm.vue'),
+  },
+  {
+    path: 'purchases',
+    name: 'PurchasesList',
+    component: () => import('App/Commercial/Purchases/PurchasesList.vue'),
+  },
+  {
+    path: 'purchases/new',
+    name: 'PurchasesNew',
+    component: () => import('App/Commercial/Purchases/PurchasesForm.vue'),
+  },
+  {
+    path: 'purchases/:id',
+    name: 'PurchasesEdit',
+    component: () => import('App/Commercial/Purchases/PurchasesForm.vue'),
   },
 ];

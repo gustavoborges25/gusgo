@@ -1,5 +1,5 @@
 <template lang="pug">
-  span asdas
+  span 1212121
 </template>
 
 <script>

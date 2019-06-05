@@ -15,12 +15,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'btn-edit',
-    methods: {
-      change() {
-        this.$emit('click')
-      }
+export default {
+  name: 'btn-edit',
+  methods: {
+    change() {
+      this.$emit('click')
     }
   }
+}
 </script>

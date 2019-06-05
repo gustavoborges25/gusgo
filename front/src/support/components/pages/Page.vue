@@ -7,15 +7,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'page',
-    props: {
-      title: {
-        type: String,
-        default: 'Título',
-      },
+export default {
+  name: 'page',
+  props: {
+    title: {
+      type: String,
+      default: 'Título',
     },
-  }
+  },
+};
 </script>
 
 <style lang="sass">

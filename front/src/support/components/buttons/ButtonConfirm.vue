@@ -15,18 +15,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'btn-confirm',
-    props: {
-      text: {
-        type: String,
-        default: 'Entrar',
-      },
+export default {
+  name: 'btn-confirm',
+  props: {
+    text: {
+      type: String,
+      default: 'Entrar',
     },
-    methods: {
-      change() {
-        this.$emit('click')
-      }
+  },
+  methods: {
+    change() {
+      this.$emit('click')
     }
   }
+}
 </script>

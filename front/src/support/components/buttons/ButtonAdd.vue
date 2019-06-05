@@ -15,18 +15,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'btn-add',
-    props: {
-      text: {
-        type: String,
-        default: 'Adicionar',
-      },
+export default {
+  name: 'btn-add',
+  props: {
+    text: {
+      type: String,
+      default: 'Adicionar',
     },
-    methods: {
-      change() {
-        this.$emit('click')
-      }
-    }
-  }
+  },
+  methods: {
+    change() {
+      this.$emit('click');
+    },
+  },
+};
 </script>
