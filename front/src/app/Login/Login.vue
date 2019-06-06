@@ -1,4 +1,6 @@
 <template lang='pug'>
+.asas
+  span 13135as1d35as
   v-layout
     v-flex(xs6).primary
       v-layout(
@@ -32,40 +34,39 @@
 </template>
 
 <script>
-  import BtnConfirm from '@/support/commons/components/ButtonConfirm.vue';
-  import TextFieldEmail from '@/support/commons/components/TextFieldEmail.vue';
-  import TextFieldPassword from '@/support/commons/components/TextFieldPassword';
-  import { login } from '@/domain/Login/LoginService';
+import BtnConfirm from 'Support/components/buttons/ButtonConfirm.vue';
+import TextFieldEmail from 'Support/components/inputs/TextFieldEmail.vue';
+import TextFieldPassword from 'Support/components/inputs/TextFieldPassword.vue';
 
-  export default {
-    components: {
-      BtnConfirm,
-      TextFieldEmail,
-      TextFieldPassword,
-    },
-    data () {
-      return{
-        user: {
-          email: '',
-          password: '',
-        }
-      }
-    },
-    methods: {
-      login() {
-        login(this.user)
-          .then(() => {
-            this.$router.replace('/');
-          }, (error) => {
-            //eslint-disable-next-line
-            console.log(error);
-          });
+export default {
+  components: {
+    BtnConfirm,
+    TextFieldEmail,
+    TextFieldPassword,
+  },
+  data() {
+    return {
+      user: {
+        email: '',
+        password: '',
       },
-      toForgotPassword() {
-        this.$router.replace({ name: 'forgotPassword' });
-      },
-    }
-  }
+    };
+  },
+  // methods: {
+  //   login() {
+  //     login(this.user)
+  //       .then(() => {
+  //         this.$router.replace('/');
+  //       }, (error) => {
+  //         //eslint-disable-next-line
+  //         console.log(error);
+  //       });
+  //   },
+  //   toForgotPassword() {
+  //     this.$router.replace({ name: 'forgotPassword' });
+  //   },
+  // }
+};
 </script>
 
 <style lang="sass">
@@ -81,4 +82,3 @@
     img
       max-width: 550px !important
 </style>
-

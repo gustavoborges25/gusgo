@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     change() {
-      this.$emit('click')
-    }
-  }
-}
+      this.$emit('click');
+    },
+  },
+};
 </script>

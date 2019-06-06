@@ -1,9 +1,6 @@
 <template lang="pug">
 .asdsa
-  span 'sada15315'
-  page(title="Pedidos ")
-    btn-add.right(text="Novo pedido")
-    data-table
+  span aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 </template>
 
 <script>

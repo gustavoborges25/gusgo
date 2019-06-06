@@ -2,10 +2,10 @@ export default [
   {
     path: '/sales',
     name: 'SalesList',
-    component: () => import('@/app/Commercial/Sales/SalesList.vue'),
+    component: () => import('App/Commercial/Sales/SalesList.vue'),
   },
   {
-    path: '/sales/new',
+    path: 'sales/new',
     name: 'SalesNew',
     component: () => import('App/Commercial/Sales/SalesForm.vue'),
   },

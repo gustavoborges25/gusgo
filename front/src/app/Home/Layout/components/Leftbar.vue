@@ -1,6 +1,5 @@
 <template lang='pug'>
   .leftbar
-    span sdaasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{{ drawerActual }}
     v-navigation-drawer(
       absolute
       v-model="drawer"
@@ -10,15 +9,21 @@
     )
       v-list
         v-list-tile(avatar)
-          v-list-tile-avatar
-            v-img(:src="getUserImage"  @click.stop="mini = !mini")
-          v-list-tile-content
-            v-list-tile-title John Leider
-        v-divider
-        v-list-tile
           v-list-tile-action
-            v-icon home
-          v-list-tile-title Início
+            v-icon(@click="mini = !mini") menu
+          v-list-tile-content
+            v-list-tile-title {{ user.name }}
+            v-list-tile-title {{ user.email }}
+        v-divider
+        v-list-tile(
+          v-for="item in items"
+          key="item.icon"
+          @click="goTo(item)"
+        )
+          v-list-tile-action
+            v-icon {{ item.icon }}
+          v-list-tile-content
+            v-list-tile-title {{ item.title }}
 </template>
 
 <script>
@@ -28,12 +33,16 @@ export default {
     return {
       drawer: true,
       mini: true,
+      user: {
+        name: '',
+        imagem: '',
+      },
       items: [
         {
-          href: 'home', router: false, title: 'Início', icon: 'home',
+          href: 'home', route: 'Home', title: 'Início', icon: 'home',
         },
         {
-          href: 'orders', router: true, title: 'Pedidos', icon: 'store',
+          href: 'orders', route: 'SalesList', title: 'Pedidos', icon: 'store',
         },
         {
           href: 'customers', router: true, title: 'Clientes', icon: 'people',
@@ -62,6 +71,9 @@ export default {
       ],
     };
   },
+  created() {
+    this.getUser();
+  },
   computed: {
     drawerActual: {
       get() {
@@ -71,9 +83,19 @@ export default {
         this.$emit('upload:drawer', value);
       },
     },
-    getUserImage() {
-      return 'https://randomuser.me/api/portraits/men/85.jpg';
+  },
+  methods: {
+    getUser() {
+      this.user.name = 'João da Silva';
+      this.user.email = 'joao.silva@mail.com';
+    },
+    goTo(item) {
+      this.mini = !this.mini;
+      this.$router.push({ name: item.route });
     },
   },
 };
 </script>
+
+<style lang="sass" scoped>
+</style>
