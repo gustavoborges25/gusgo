@@ -6,6 +6,7 @@
       card
       flat
     )
+      span gusgo
       v-spacer
       v-list-tile(@click="logout()")
         v-list-tile-action

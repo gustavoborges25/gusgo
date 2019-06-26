@@ -1,9 +1,8 @@
 <template lang='pug'>
   .leftbar
     v-navigation-drawer(
-      absolute
       v-model="drawer"
-      :mini-variant.sync="mini"
+      :mini-variant="mini"
       hide-overlay
       stateless
     )
@@ -16,8 +15,8 @@
             v-list-tile-title {{ user.email }}
         v-divider
         v-list-tile(
-          v-for="item in items"
-          key="item.icon"
+          v-for="(item, index) in items"
+          :key="index"
           @click="goTo(item)"
         )
           v-list-tile-action
@@ -90,7 +89,7 @@ export default {
       this.user.email = 'joao.silva@mail.com';
     },
     goTo(item) {
-      this.mini = !this.mini;
+      this.mini = true;
       this.$router.push({ name: item.route });
     },
   },

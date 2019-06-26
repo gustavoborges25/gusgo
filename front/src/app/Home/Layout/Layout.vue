@@ -1,13 +1,13 @@
 <template lang="pug">
   .layout
     v-container.pa-0(fluid justify-start)
-      v-layout(row wrap)
-        v-flex(xs12 md12 lg12 xl12)
-          topbar
-        v-flex(xs4 md3 lg2 xl1)
-          leftbar
-        v-flex(xs8 md9 lg10 xl11)
-          page
+      v-layout(align-start justify-center row fill-height)
+        leftbar
+        v-layout(row wrap)
+          v-flex(xs12)
+            topbar
+          v-flex(xs12)
+            page
 </template>
 
 <script>
