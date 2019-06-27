@@ -6,21 +6,27 @@
       card
       flat
     )
-      span gusgo
+      span.white--text Gusgo
       v-spacer
-      v-list-tile(@click="logout()")
+      v-list-tile(@click="logout($event)")
         v-list-tile-action
           v-icon.white--text exit_to_app
         v-list-tile-title.white--text Sair
 </template>
 <script>
+import Notification from 'Support/plugins/notifications';
+
 export default {
   name: 'Topbar',
+  mixins: [Notification],
   methods: {
-    click() {
-      this.$emit('toggle-menu');
-    },
     logout() {
+      const options = this.optionsModalConfirm({ title: 'Sair do sistema?' });
+      this.$swal(options).then((result) => {
+        if (result.value) {
+          console.log('saiu do sistema');
+        }
+      });
     },
   },
 };
