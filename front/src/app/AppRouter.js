@@ -1,19 +1,19 @@
-// import CommercialRouter from 'App/Commercial/CommercialRouter';
+import CommercialRouter from 'App/Commercial/CommercialRouter';
 // import FinancialRouter from 'App/Financial/FinancialRouter';
 // import RegistrationRouter from 'App/Registration/RegistrationRouter';
 
 export default [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('App/Home/Home.vue'),
+    name: 'Layout',
+    component: () => import('App/Home/Layout/Layout.vue'),
     children: [
       {
-        path: 'sales',
-        name: 'SalesList',
-        component: () => import('App/Commercial/Sales/SalesList.vue'),
+        path: '',
+        name: 'Home',
+        component: () => import('App/Home/Home.vue'),
       },
-      // ...CommercialRouter,
+      ...CommercialRouter,
       // ...FinancialRouter,
       // ...RegistrationRouter,
     ],

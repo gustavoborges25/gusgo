@@ -6,26 +6,44 @@
       hide-overlay
       stateless
     )
-      v-list
-        v-list-tile(avatar)
+      v-list(two-line)
+        v-list-tile
           v-list-tile-action
             v-icon(@click="mini = !mini") menu
           v-list-tile-content
-            v-list-tile-title {{ user.name }}
-            v-list-tile-title {{ user.email }}
+            v-list-tile-title.title.font-weight-medium.text-truncate {{ user.name }}
+            v-list-tile-sub-title.body-1.font-weight-light.text-truncate {{ user.email }}
         v-divider
         v-list-tile(
           v-for="(item, index) in items"
           :key="index"
-          @click="goTo(item)"
         )
           v-list-tile-action
-            v-icon {{ item.icon }}
+            v-icon(@click="goTo(item)") {{ item.icon }}
           v-list-tile-content
-            v-list-tile-title {{ item.title }}
+            v-list-tile-title.pointer.title.font-weight-light(
+              v-if="item.children.length < 1"
+              @click="goTo(item)"
+            ) {{ item.title }}
+            v-menu(
+              v-else
+              offset-y
+              min-width="220"
+              transition="slide-y-transition"
+            )
+              v-list-tile-title.title.font-weight-light(slot="activator") {{ item.title }}
+              v-list(
+                v-if="item.children.length > 0"
+                v-for="(child, index) in item.children"
+                :key="index"
+              )
+                v-list-tile(@click="goTo(child)")
+                  v-list-tile-title.title.font-weight-light {{ child.title }}
 </template>
 
 <script>
+import Items from './items';
+
 export default {
   name: 'Leftbar',
   data() {
@@ -34,59 +52,18 @@ export default {
       mini: true,
       user: {
         name: '',
-        imagem: '',
+        email: '',
       },
-      items: [
-        {
-          href: 'home', route: 'Home', title: 'Início', icon: 'home',
-        },
-        {
-          href: 'orders', route: 'SalesList', title: 'Pedidos', icon: 'store',
-        },
-        {
-          href: 'customers', router: true, title: 'Clientes', icon: 'people',
-        },
-        {
-          href: 'providers', router: true, title: 'Fornecedores', icon: 'work',
-        },
-        {
-          href: 'products', router: true, title: 'Produtos', icon: 'shopping_cart',
-        },
-        {
-          href: 'financial', router: true, title: 'Financeiro', icon: 'payment',
-        },
-        {
-          href: 'expenses', router: true, title: 'Despesas', icon: 'description',
-        },
-        {
-          href: 'dashboard', router: true, title: 'Relatórios', icon: 'dashboard',
-        },
-        {
-          href: 'schedule', router: true, title: 'Agenda', icon: 'view_agenda',
-        },
-        {
-          href: 'settings', router: true, title: 'Configurações', icon: 'build',
-        },
-      ],
+      items: Items,
     };
   },
   created() {
     this.getUser();
   },
-  computed: {
-    drawerActual: {
-      get() {
-        return this.drawer;
-      },
-      set(value) {
-        this.$emit('upload:drawer', value);
-      },
-    },
-  },
   methods: {
     getUser() {
-      this.user.name = 'João da Silva';
-      this.user.email = 'joao.silva@mail.com';
+      this.user.name = 'João da Silva Santos';
+      this.user.email = 'joao.santos@gusgo.com.br';
     },
     goTo(item) {
       this.mini = true;
@@ -97,4 +74,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  .leftbar
+    height: 100%
 </style>

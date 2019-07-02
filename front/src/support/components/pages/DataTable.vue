@@ -1,5 +1,5 @@
 <template lang="pug">
-  #datatable
+  .datatable
     btn-add.right(text="Novo cliente")
     v-data-table.pt-4(
       hide-actions

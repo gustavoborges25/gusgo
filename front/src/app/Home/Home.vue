@@ -1,6 +1,6 @@
 <template lang="pug">
   .home
-    layout
+    span home
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template lang="pug">
   .layout
-    v-container.pa-0(fluid justify-start)
-      v-layout(align-start justify-center row fill-height)
+    v-container.layout--margin.pa-0(fluid justify-start)
+      v-layout(align-start justify-center row)
         leftbar
-        v-layout(row wrap)
+        v-layout(row wrap).layout--heig
           v-flex(xs12)
             topbar
           v-flex(xs12)
@@ -24,3 +24,10 @@ export default {
   },
 };
 </script>
+
+<style lang="sass">
+  .layout
+    height: 100%
+    &--margin
+      margin: 0
+</style>

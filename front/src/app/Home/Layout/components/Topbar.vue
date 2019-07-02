@@ -2,16 +2,16 @@
   .topbar
     v-toolbar(
       color="primary"
-      :height="58"
+      :height="60"
       card
       flat
     )
-      span.white--text Gusgo
+      v-toolbar-title.white--text Gusgo
       v-spacer
-      v-list-tile(@click="logout($event)")
-        v-list-tile-action
-          v-icon.white--text exit_to_app
-        v-list-tile-title.white--text Sair
+      v-toolbar-items
+        v-btn(flat @click="logout($event)")
+          v-icon.white--text.mr-2 exit_to_app
+          span.white--text.text-capitalize Sair
 </template>
 <script>
 import Notification from 'Support/plugins/notifications';
