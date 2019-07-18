@@ -2,7 +2,6 @@
   .topbar
     v-toolbar(
       color="primary"
-      :height="60"
       card
       flat
     )

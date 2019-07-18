@@ -11,8 +11,18 @@
           v-list-tile-action
             v-icon(@click="mini = !mini") menu
           v-list-tile-content
-            v-list-tile-title.title.font-weight-medium.text-truncate {{ user.name }}
-            v-list-tile-sub-title.body-1.font-weight-light.text-truncate {{ user.email }}
+            displays-text.text-truncate(
+              :text="user.name"
+              type="title"
+              weight="regular"
+              color="black"
+            )
+            displays-text.text-truncate(
+              :text="user.email"
+              type="subheading"
+              weight="light"
+              color="lightgrey"
+              )
         v-divider
         v-list-tile(
           v-for="(item, index) in items"
@@ -42,10 +52,14 @@
 </template>
 
 <script>
+import DisplaysText from 'Support/components/pages/DisplaysText.vue';
 import Items from './items';
 
 export default {
   name: 'Leftbar',
+  components: {
+    DisplaysText,
+  },
   data() {
     return {
       drawer: true,

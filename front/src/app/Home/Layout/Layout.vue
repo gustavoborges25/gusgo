@@ -1,10 +1,10 @@
 <template lang="pug">
   .layout
-    v-container.layout--margin.pa-0(fluid justify-start)
-      v-layout(align-start justify-center row)
-        leftbar
-        v-layout(row wrap).layout--heig
-          v-flex(xs12)
+    v-layout
+      leftbar
+      v-flex(xs12)
+        v-layout(row wrap).blue
+          v-flex(xs12).green
             topbar
           v-flex(xs12)
             page
@@ -30,4 +30,5 @@ export default {
     height: 100%
     &--margin
       margin: 0
+      padding: 0
 </style>
