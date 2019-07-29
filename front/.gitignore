@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
 /dist
+/reports
+/coverage
+test-report.xml
+eslintReport.json
 
 # local env files
 .env.local
@@ -19,3 +23,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
