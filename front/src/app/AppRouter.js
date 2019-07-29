@@ -12,6 +12,9 @@ export default [
         path: '',
         name: 'Home',
         component: () => import('App/Home/Home.vue'),
+        meta: {
+          title: 'Home',
+        },
       },
       ...CommercialRouter,
       // ...FinancialRouter,

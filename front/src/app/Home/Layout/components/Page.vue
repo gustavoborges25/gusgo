@@ -1,13 +1,12 @@
 <template lang="pug">
-  v-container.pa-0.red(fluid)
+  v-container.pa-0(fluid)
     v-card.pa-5(flat)
-      v-card-title.color_title
+      v-card-title
         displays-text(
-          :text="'Título da página'"
+          :text="$route.meta.title || ''"
           type="headline"
           weight="light"
           color="lightgrey"
-          transform="lowercase"
         )
       v-divider.py-2
       router-view

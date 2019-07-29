@@ -2,10 +2,6 @@
   v-tooltip(bottom)
     v-btn(
       fab
-      dark
-      right
-      bottom
-      absolute
       slot="activator"
       color="primary"
       @click="change()"

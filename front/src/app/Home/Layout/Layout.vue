@@ -2,12 +2,10 @@
   .layout
     v-layout
       leftbar
-      v-flex(xs12)
-        v-layout(row wrap).blue
-          v-flex(xs12).green
-            topbar
-          v-flex(xs12)
-            page
+      v-layout(row wrap)
+        v-flex(xs12)
+          topbar
+          page
 </template>
 
 <script>

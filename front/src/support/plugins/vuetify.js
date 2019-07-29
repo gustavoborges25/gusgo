@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import 'vuetify/src/stylus/app.styl';
+import '@/style/main.styl';
 
 Vue.use(Vuetify, {
   theme: {
@@ -12,6 +12,9 @@ Vue.use(Vuetify, {
     success: '#00a75a',
     warning: '#FFC107',
     lightgrey: '#757575',
+  },
+  options: {
+    customProperties: true,
   },
   iconfont: 'md',
 });

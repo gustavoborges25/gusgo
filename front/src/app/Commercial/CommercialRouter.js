@@ -1,8 +1,11 @@
 export default [
   {
-    path: '/sales',
+    path: 'sales',
     name: 'SalesList',
     component: () => import('App/Commercial/Sales/SalesList.vue'),
+    meta: {
+      title: 'Pedidos de venda',
+    },
   },
   // {
   //   path: 'sales/new',
@@ -14,11 +17,14 @@ export default [
   //   name: 'SalesEdit',
   //   component: () => import('App/Commercial/Sales/SalesForm.vue'),
   // },
-  // {
-  //   path: 'purchases',
-  //   name: 'PurchasesList',
-  //   component: () => import('App/Commercial/Purchases/PurchasesList.vue'),
-  // },
+  {
+    path: 'purchases',
+    name: 'PurchasesList',
+    component: () => import('App/Commercial/Purchases/PurchasesList.vue'),
+    meta: {
+      title: 'Pedidos de compra',
+    },
+  },
   // {
   //   path: 'purchases/new',
   //   name: 'PurchasesNew',

@@ -20,7 +20,7 @@ export default [
       },
       {
         title: 'Pedido de Compra',
-        route: 'SalesList',
+        route: 'PurchasesList',
       },
     ],
   },

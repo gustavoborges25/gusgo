@@ -11,44 +11,66 @@
           v-list-tile-action
             v-icon(@click="mini = !mini") menu
           v-list-tile-content
-            displays-text.text-truncate(
+            displays-text(
               :text="user.name"
               type="title"
-              weight="regular"
+              weight="bold"
               color="black"
             )
-            displays-text.text-truncate(
+            displays-text(
               :text="user.email"
               type="subheading"
               weight="light"
               color="lightgrey"
-              )
+            )
         v-divider
         v-list-tile(
           v-for="(item, index) in items"
           :key="index"
         )
           v-list-tile-action
-            v-icon(@click="goTo(item)") {{ item.icon }}
+            v-tooltip(bottom)
+              v-icon(
+                slot="activator"
+                @click="goTo(item)"
+              ) {{ item.icon }}
+              span {{ item.title }}
           v-list-tile-content
-            v-list-tile-title.pointer.title.font-weight-light(
+            v-list-tile-title.pointer(
               v-if="item.children.length < 1"
               @click="goTo(item)"
-            ) {{ item.title }}
+            )
+              displays-text(
+                :text="item.title"
+                type="title"
+                weight="light"
+                color="lightgrey"
+            )
             v-menu(
               v-else
               offset-y
               min-width="220"
               transition="slide-y-transition"
             )
-              v-list-tile-title.title.font-weight-light(slot="activator") {{ item.title }}
+              v-list-tile-title(slot="activator")
+                displays-text(
+                  :text="item.title"
+                  type="title"
+                  weight="light"
+                  color="lightgrey"
+                )
               v-list(
                 v-if="item.children.length > 0"
                 v-for="(child, index) in item.children"
                 :key="index"
               )
                 v-list-tile(@click="goTo(child)")
-                  v-list-tile-title.title.font-weight-light {{ child.title }}
+                  displays-text(
+                    :text="child.title"
+                    type="title"
+                    weight="light"
+                    color="lightgrey"
+                  )
 </template>
 
 <script>
