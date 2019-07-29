@@ -1,17 +1,36 @@
 module.exports = {
   root: true,
+
   env: {
     node: true,
   },
-  extends: [
-    'plugin:vue/essential',
-    '@vue/airbnb',
-  ],
+
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off',
+    'no-debugger': 'off',
+    'vue/component-name-in-template-casing': [
+      'error',
+      'kebab-case',
+    ],
+    'vue/v-on-function-call': [
+      'error',
+      'always',
+    ],
   },
+
   parserOptions: {
     parser: 'babel-eslint',
+  },
+
+  extends: [
+    'plugin:vue/recommended',
+    '@vue/airbnb',
+  ],
+  settings: {
+    'import/resolver': {
+      jest: {
+        jestConfigFile: './jest.config.js',
+      },
+    },
   },
 };

@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  assetsDir: './src/assets',
   configureWebpack: {
     resolve: {
       alias: {
@@ -13,10 +12,7 @@ module.exports = {
     },
   },
   devServer: {
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
+    disableHostCheck: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8081',

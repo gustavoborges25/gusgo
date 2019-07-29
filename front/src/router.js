@@ -1,25 +1,29 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import routes from 'App/AppRouter';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-    },
-  ],
+  routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const token = getToken();
+//   const allowedRoutes = [
+//     'Login',
+//     'Recover',
+//   ];
+//
+//   if (!token && allowedRoutes.indexOf(to.name) === -1) {
+//     return next('/login');
+//   }
+//   if (token && to.name === 'Login') {
+//     return next('/');
+//   }
+//
+//   return next();
+// });
+
+export default router;
