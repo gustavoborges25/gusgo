@@ -1,22 +1,15 @@
 <template lang="pug">
-  v-tooltip(bottom)
-    v-btn(
-      flat
-      slot="activator"
-      :color="color"
-      @click="change()"
-    )
-      v-icon(:color="iconColor") {{ icon }}
-    span {{ text }}
 </template>
 
 <script>
 export default {
-  name: 'BtnFlat',
   props: {
     text: {
       type: String,
       default: '',
+    },
+    disabled: {
+      type: Boolean,
     },
     icon: {
       type: String,
@@ -24,15 +17,21 @@ export default {
     },
     color: {
       type: String,
-      default: 'primary',
+      default: '',
     },
     iconColor: {
       type: String,
-      default: 'secondary',
+      default: '',
+    },
+    iconRight: {
+      type: Boolean,
+    },
+    block: {
+      type: Boolean,
     },
   },
   methods: {
-    change() {
+    onClick() {
       this.$emit('click');
     },
   },

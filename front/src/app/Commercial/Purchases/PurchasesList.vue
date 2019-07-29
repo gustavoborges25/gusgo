@@ -1,16 +1,16 @@
 <template lang="pug">
   .purchases_list
-    btn-add.right(text="Novo pedido")
+    btn-action.right(text="Novo pedido")
     data-table
 </template>
 
 <script>
 import DataTable from 'Support/components/pages/DataTable.vue';
-import BtnAdd from 'Support/components/buttons/ButtonAdd.vue';
+import BtnAction from 'Support/components/buttons/BtnAction.vue';
 
 export default {
   components: {
-    BtnAdd,
+    BtnAction,
     DataTable,
   },
 };

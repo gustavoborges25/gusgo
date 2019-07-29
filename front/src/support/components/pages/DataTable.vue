@@ -1,6 +1,6 @@
 <template lang="pug">
   .data_table
-    v-data-table.elevation-3(
+    v-data-table.elevation-2(
       hide-actions
       :no-data-text="noDataText"
       :no-results-text="noDataResults"
@@ -20,15 +20,14 @@
             row
             v-if="!(hideEdit && hideDelete)"
           )
-            btn-flat.lightgrey--text(
+            btn-icon(
               icon="edit"
               icon-color="primary"
               text="Editar"
               @click="onClickEdit(props.item)"
               v-if="!hideEdit"
             )
-            btn-flat.lightgrey--text(
-              ref="btnDelete"
+            btn-icon(
               icon="delete"
               icon-color="error"
               text="Excluir"
@@ -54,20 +53,20 @@
 
 <script>
 import SelectPage from 'Support/components/inputs/SelectPage.vue';
-import BtnFlat from 'Support/components/buttons/ButtonFlat.vue';
+import BtnIcon from 'Support/components/buttons/BtnIcon.vue';
 
 export default {
-  name: 'data-table',
+  name: 'DataTable',
   components: {
     SelectPage,
-    BtnFlat,
+    BtnIcon,
   },
   props: {
     headers: {
       type: Array,
       default: () => [],
     },
-    pagination: {
+    items: {
       type: Object,
       default: () => {},
     },
@@ -92,6 +91,14 @@ export default {
     };
   },
   computed: {
+    pagination: {
+      get() {
+        return this.items;
+      },
+      set(newValue) {
+        this.$emit('update:items', newValue);
+      },
+    },
     pages() {
       const pages = parseInt((this.pagination.totalItems), 10) / parseInt((this.rowsPerPage), 10);
       return Math.ceil(pages);
@@ -102,7 +109,7 @@ export default {
       },
       set(newValue) {
         this.pagination.page = newValue;
-        this.$emit('update-list');
+        this.$emit('update:items', this.pagination);
       },
     },
     rowsPerPage: {
@@ -111,7 +118,7 @@ export default {
       },
       set(newValue) {
         this.pagination.perPage = newValue;
-        this.$emit('update-list');
+        this.$emit('update:items', this.pagination);
       },
     },
   },
@@ -145,10 +152,6 @@ export default {
           font-size 1.5vh
           padding-top: 1vh !important
           padding-bottom : 1vh !important
-        i
-          margin-right 7px
-          display flex
-          align-items center
     .v-table__overflow
       background #FFFFFF
 </style>

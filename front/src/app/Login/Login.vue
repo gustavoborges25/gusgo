@@ -30,17 +30,17 @@
               small
               to="toForgotPassword()"
             ) Esqueceu sua senha?
-            btn-confirm.mb-3(@click="login()")
+            btn-action.mb-3(@click="login()")
 </template>
 
 <script>
-import BtnConfirm from 'Support/components/buttons/ButtonConfirm.vue';
+import BtnAction from 'Support/components/buttons/BtnAction.vue';
 import TextFieldEmail from 'Support/components/inputs/TextFieldEmail.vue';
 import TextFieldPassword from 'Support/components/inputs/TextFieldPassword.vue';
 
 export default {
   components: {
-    BtnConfirm,
+    BtnAction,
     TextFieldEmail,
     TextFieldPassword,
   },

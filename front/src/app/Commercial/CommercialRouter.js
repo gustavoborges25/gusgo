@@ -7,16 +7,16 @@ export default [
       title: 'Pedidos de venda',
     },
   },
-  // {
-  //   path: 'sales/new',
-  //   name: 'SalesNew',
-  //   component: () => import('App/Commercial/Sales/SalesForm.vue'),
-  // },
-  // {
-  //   path: 'sales/:id',
-  //   name: 'SalesEdit',
-  //   component: () => import('App/Commercial/Sales/SalesForm.vue'),
-  // },
+  {
+    path: 'sales/new',
+    name: 'SalesNew',
+    component: () => import('App/Commercial/Sales/SalesForm.vue'),
+  },
+  {
+    path: 'sales/:id',
+    name: 'SalesEdit',
+    component: () => import('App/Commercial/Sales/SalesForm.vue'),
+  },
   {
     path: 'purchases',
     name: 'PurchasesList',

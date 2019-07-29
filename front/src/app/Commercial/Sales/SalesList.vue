@@ -1,10 +1,23 @@
 <template lang="pug">
   .sales_list
-    v-layout(row wrap)
-      v-flex(xs12).pb-3
-        btn-add.right(text="Novo pedido")
+    v-layout(
+      row
+      wrap
+    )
+      v-flex.pb-3(xs12)
+        btn-action.right(
+          icon="add"
+          color="primary"
+          text="Novo pedido"
+          @click="goToAdd($event)"
+        )
       v-flex(xs12)
-        data-table(:pagination="pagination" :headers="headers")
+        data-table(
+          :items.sync="items"
+          :headers="headers"
+          @edit="goToEdit($event)"
+          @delete="onDelete($event)"
+        )
           template(
             slot="rows"
             slot-scope="props"
@@ -18,31 +31,38 @@
 
 <script>
 import DataTable from 'Support/components/pages/DataTable.vue';
-import BtnAdd from 'Support/components/buttons/ButtonAdd.vue';
+import BtnAction from 'Support/components/buttons/BtnAction.vue';
+import BtnIcon from 'Support/components/buttons/BtnIcon.vue';
+import Notification from 'Support/plugins/notifications';
 
 export default {
   name: 'SalesList',
   components: {
-    BtnAdd,
+    BtnAction,
     DataTable,
+    BtnIcon,
   },
+  mixins: [Notification],
   data() {
     return {
-      pagination: {
+      items: {
         data: [
           {
+            id: '1',
             number: '1',
             createdAt: '01/12/2017',
             provider: 'Fornecedor AAAAAA Ltda',
             value: 'R$ 1.234,58',
           },
           {
+            id: '2',
             number: '2',
             createdAt: '15/06/2017',
             provider: 'Fornecedor BBBBBBBB Ltda',
             value: 'R$ 515.513,59',
           },
           {
+            id: '3',
             number: '3',
             createdAt: '25/01/2018',
             provider: 'Fornecedor CCCCCCCCC CCCCCCCCCCCCCC CCCCCCCCCCCCCC CCCCCCCCCCCCCCCCC CCCCCCCCCCCCCCCC CCCCCCCCCCC Ltda',
@@ -79,7 +99,7 @@ export default {
           sortable: false,
         },
         {
-          text: 'Ação',
+          text: 'Ações',
           width: '15%',
           align: 'center',
           value: 'situation',
@@ -87,6 +107,24 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    goToAdd() {
+      this.$router.push({ name: 'SalesNew' });
+    },
+    goToEdit(item) {
+      this.$router.push({ name: 'SalesEdit', params: { id: item.id } });
+    },
+    onDelete() {
+      const options = this.optionsModalConfirm({ title: 'Confirma a exclusão do pedido?' });
+      this
+        .$swal(options)
+        .then((result) => {
+          if (result.value) {
+            this.showSuccess('Pedido excluído com sucesso!');
+          }
+        });
+    },
   },
 };
 </script>
