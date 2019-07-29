@@ -1,4 +1,4 @@
-import http from '@/support/services/http.service';
+import http from 'Support/services/http.service';
 
 class AddressService {
   static getCities(state) {

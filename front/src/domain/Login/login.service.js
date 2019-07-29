@@ -1,4 +1,4 @@
-import http from '@/support/services/http.service';
+import http from 'Support/services/http.service';
 
 class LoginService {
   static login(user) {
