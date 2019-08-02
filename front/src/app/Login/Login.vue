@@ -17,11 +17,11 @@
       )
         v-card.elevation-3.white(min-width="50%")
           v-card-text
-            text-field-email(
+            input-email(
               required
               v-model="user.email"
             )
-            text-field-password(
+            input-password(
               required
               v-model="user.password"
             )
@@ -34,15 +34,16 @@
 </template>
 
 <script>
-import BtnAction from 'Support/components/buttons/BtnAction.vue';
-import TextFieldEmail from 'Support/components/inputs/TextFieldEmail.vue';
-import TextFieldPassword from 'Support/components/inputs/TextFieldPassword.vue';
+  import BtnAction from 'Support/components/buttons/BtnAction.vue';
+  import InputEmail from 'Support/components/inputs/InputEmail.vue';
+  import InputPassword from 'Support/components/inputs/InputPassword.vue';
+  // import Login from 'Domain/Login/login';
 
 export default {
   components: {
     BtnAction,
-    TextFieldEmail,
-    TextFieldPassword,
+    InputEmail,
+    InputPassword,
   },
   data() {
     return {

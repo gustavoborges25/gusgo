@@ -4,9 +4,6 @@ import BtnAction from 'Support/components/buttons/BtnAction.vue';
 
 function factory(icon, message) {
   return mount(BtnAction, {
-    mocks: {
-      $t: () => 'msg error',
-    },
     propsData: {
       icon,
       message,

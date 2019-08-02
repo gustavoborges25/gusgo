@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'text-field-password',
+  name: 'InputPassword',
   props: {
     value: {
       type: String,
@@ -25,15 +25,12 @@ export default {
     },
     readonly: {
       type: Boolean,
-      default: false,
     },
     required: {
       type: Boolean,
-      default: false,
     },
     min: {
       type: Boolean,
-      default: false,
     },
   },
   data(vm) {

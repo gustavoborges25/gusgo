@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import Adress from 'Domain/Adress/Adress';
+  import Address from 'Domain/Address/address';
 
   export default {
     name: 'SelectCity',
@@ -71,14 +71,13 @@
     methods: {
       loadCities() {
         this.loading = true;
-        Adress
+        Address
           .getCities(this.state)
           .then((data) => {
             this.cities = data;
             this.value = data[0];
             this.loading = false;
           }, (error) => {
-            console.log(error);
             this.loading = false;
           });
       },

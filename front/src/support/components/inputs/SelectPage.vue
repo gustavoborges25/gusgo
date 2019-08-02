@@ -1,6 +1,6 @@
 <template lang="pug">
-  v-tooltip
-    v-menu(offset-y right)
+  v-tooltip(bottom)
+    v-menu(offset-y right slot="activator")
       v-btn.elevation-0(
         slot="activator"
         color="primary"
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'select-page',
+  name: 'SelectPage',
   props: {
     value: {
       type: Number,

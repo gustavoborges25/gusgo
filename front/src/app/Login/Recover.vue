@@ -15,11 +15,11 @@
       )
         v-card.elevation-3.white(min-width="50%")
           v-card-text
-            text-field-email(
+            input-email(
               required
               v-model="user.email"
             )
-            text-field-password(
+            input-password(
               required
               v-model="user.password"
             )
@@ -28,20 +28,20 @@
               small
               to="toForgotPassword()"
             ) Esqueceu sua senha?
-            btn-confirm.mb-3(@click="login()")
+            btn-action.mb-3(@click="login()")
 </template>
 
 <script>
-  import BtnConfirm from '@/support/commons/components/ButtonConfirm.vue';
-  import TextFieldEmail from '@/support/commons/components/TextFieldEmail.vue';
-  import TextFieldPassword from '@/support/commons/components/TextFieldPassword';
-  import { login } from '@/domain/Login/LoginService';
+  import BtnAction from 'Support/components/buttons/BtnAction.vue';
+  import InputEmail from 'Support/components/inputs/InputEmail.vue';
+  import InputPassword from 'Support/components/inputs/InputPassword.vue';
+  // import Login from 'Domain/Login/login';
 
   export default {
     components: {
-      BtnConfirm,
-      TextFieldEmail,
-      TextFieldPassword,
+      BtnAction,
+      InputEmail,
+      InputPassword,
     },
     data () {
       return{

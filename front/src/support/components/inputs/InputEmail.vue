@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'text-field-email',
+  name: 'InputEmail',
   props: {
     value: {
       type: String,
@@ -22,11 +22,9 @@ export default {
     },
     readonly: {
       type: Boolean,
-      default: false,
     },
     required: {
       type: Boolean,
-      default: false,
     },
   },
   data(vm) {

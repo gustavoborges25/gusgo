@@ -1,6 +1,6 @@
 <template lang="pug">
   .data_table
-    v-data-table.elevation-2(
+    v-data-table.elevation-1(
       hide-actions
       :no-data-text="noDataText"
       :no-results-text="noDataResults"
@@ -34,7 +34,7 @@
               @click="onClickDelete(props.item)"
               v-if="!hideDelete"
             )
-    v-layout.pt-3(
+    v-layout.pt-1(
       row
       align-center
     )
@@ -47,7 +47,7 @@
           color="primary"
           :total-visible="7"
         )
-      v-flex(xs1 align-center)
+      v-flex(xs1)
         select-page(v-model="rowsPerPage")
 </template>
 
@@ -136,8 +136,6 @@ export default {
 <style lang="stylus">
   .data_table
     letter-spacing: 0.5px
-    .v-table
-      background transparent
     .theme--light.v-table
       thead
         tr:first-child

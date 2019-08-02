@@ -1,9 +1,9 @@
-import AdressService from 'Support/services/adress.service';
+import AddressService from 'Domain/Address/address.service';
 
 class Address {
   static getCities(state) {
     return new Promise((resolve, reject) => {
-      AdressService
+      AddressService
         .getCities(state)
         .then(({ data }) => {
           resolve(data);
@@ -15,7 +15,7 @@ class Address {
 
   static getStates() {
     return new Promise((resolve, reject) => {
-      AdressService
+      AddressService
         .getStates()
         .then(({ data }) => {
           resolve(data);
