@@ -7,8 +7,13 @@
 </template>
 
 <script>
+import truncating from 'Support/filters/text.filter';
+
 export default {
   name: 'DisplaysText',
+  filters: {
+    truncating,
+  },
   props: {
     text: {
       required: true,
@@ -44,15 +49,6 @@ export default {
       default: 50,
     },
   },
-  filters: {
-    truncating(value, truncate, truncateAt) {
-      const aux = '...';
-      if (value.length > (truncateAt - 3) && truncate) {
-        return `${value.substring(0, truncateAt)}${aux}`;
-      }
-      return value;
-    },
-  },
   computed: {
     classValue() {
       const type = this.getClass()[this.type];
@@ -66,7 +62,6 @@ export default {
   methods: {
     getColor() {
       const sufixColor = '--text';
-      if (!this.color) return `blue${sufixColor}`;
       return this.color + sufixColor;
     },
     getWeight() {
