@@ -13,7 +13,7 @@
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "open-sans-fontface": "*",
-    "qs": "^6.7.0",
+    "qs": "^6.7.3",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vue-sweetalert2": "^2.1.0",
